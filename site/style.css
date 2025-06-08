@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+.slider{
+    height: 100vh;
+    box-shadow: inset 0 50px 50px #000, inset 0 -50px 50px #000;
+
+}
+:root{
+    --index: calc(1vw + 1vh);
+    --swiper-theme-color: #8B0000;
+    --swiper-navigation-size: 30px;
+    --swiper-navigation-sides-offset: 40px;
+    --swiper-pagination-bottom: 20px;
+    --swiper-pagination-color: #c2081e;
+    --swiper-pagination-bullet-inactive-color: rgb(254, 248, 248);
+    --swiper-pagination-bullet-opacity: 1;
+}
+.slider .slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slide__content{
+    text-align: center;
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+    z-index: 10;
+    position: relative;
+}
+.slide__content h2{
+    font-size: calc(var(--index) * 4);
+    text-transform: uppercase;
+    letter-spacing: calc(var(--index) * 1.2);
+    margin-bottom: calc(var(--index) * 3);
+    position: relative;
+}
+.slide__content h2::after{
+    content: '';
+    height: 1px;
+    width: 20%;
+    background-color: rgba(255 255 255 / .35);
+    position: absolute;
+    left: 40%;
+    bottom: calc(var(--index) * -1);
+}
+.slide__content p{
+    font-size: calc(var(--index) * 1);
+    text-transform: uppercase;
+    color: rgba(255 255 255 / .8);
+    letter-spacing: calc(var(--index) * .25);
+    margin-bottom: calc(var(--index) * 2.6);
+}
+#btn-game {
+    --button-color: rgba(255 255 255 /.9);
+    padding: 8px 40px;
+    font-size: 15.25px;
+    border-radius: 10em;
+    background-color: transparent;
+    border: 2px solid var(--button-color);
+    color: var(--button-color);
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+.slider-navigation > * {
+    border: 2px solid #8B0000;
+    border-radius: 10em;
+    width: 55px;
+    height: 55px;
+}
+.swiper-slide-active .slide__content{
+    opacity: 1;
+    pointer-events: auto;
+}
+.img-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .7;
+    transition: opacity 1s ease-out;
+    z-index: 0;
+}
+.game {
+    position: absolute;
+    width: calc(var(--index) * 14);
+    height: calc(var(--index) * 4);
+    border-bottom: 1px solid #ffffff;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 95%; 
+    margin:auto;
+    display: flex;
+    align-items: flex-end;
+}
+#human {
+    width: calc(var(--index)*2);
+    height: calc(var(--index)*2);
+    background-image: url(media/human.png);
+    background-size: contain;
+    position: relative;
+    margin-right: auto;
+}
+#tree{
+    width: calc(var(--index)*1.7);
+    height: calc(var(--index)*2);
+    background-image: url(media/tree1.png);
+    background-size: contain;
+    position: relative;
+    animation: treeMov 0.5s infinite linear;
+
+}
+@keyframes treeMov {
+    0% {
+        left: calc(var(--index)*1);
+    }
+    100% {
+        left: calc(var(--index)*-13);
+    }
+}
+.jump{
+    animation: jump 0.6s infinite;
+}
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-120%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+#counter {
+    --counter-color: rgba(255 255 255 /.9);
+    padding: 8px 40px;
+    font-size: 15.25px;
+    border-radius: 10em;
+    background-color: transparent;
+    border: 2px solid var(--counter-color);
+    color: var(--counter-color);
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+.container{
+    width: calc(var(--index) * 14);
+    height: calc(var(--index) * 6.6);
+    left: 50%; 
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 25px;
+    z-index: 11;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+    transform: translateX(-50%);
+}
+.box {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+input[type=range] {
+    width: 80%;
+    margin-left: 1%;
+    color: #ddd;
+}
+
+#result {
+    text-align: center;
+    padding: 1.5%;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+nav.main {
+  position: fixed;
+  top: 0;  
+  left: 0;
+  width: 100%;      
+  z-index: 1000;
+  background: #000;
+  opacity: .5;
+}
+
+nav.main ul {
+  display: flex;             
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav.main ul li {
+  margin: 0 15px;
+}
+
+nav.main ul li a {
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.feedback {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  justify-content: center;
+  align-items: center;
+}
+
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+#feedback-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#feedback-form input,
+#feedback-form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#feedback-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#feedback-form button {
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#feedback-form button:hover {
+  background-color: #5a5a5a;
+}
+
+.feedback-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  position: relative;
+  color:#000;
+}
+.feedback-content h6{
+  text-align: center;
+  font-size: 20px;
+}
+
+.feedback-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.feedback-close:hover {
+  color: #000;
+}
+#feedback-button {
+    --button-color: rgba(255 255 255 /.9);
+    padding: 0;
+    background-color: transparent;
+    color: var(--button-color);
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    border: none;
+    top: 10px;
+}

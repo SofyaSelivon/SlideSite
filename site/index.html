@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> App</title>
+    <script src="gsap/gsap.min.js" defer></script>
+    <script src="swiper/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="swiper slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide">
+                <nav class = "main">
+                    <ul>
+                        <li><a href="https://github.com/SofyaSelivon">Github</a></li>
+                        <li><a href="https://hh.ru/resume/42dbb21aff0ed6e6030039ed1f785a32585543">hh</a></li>
+                        <li><button id="feedback-button">Обратная связь</button></li>
+                    </ul>
+                </nav>
+                <div class="slide__content">
+                    <img src="media/pic3.jpg" class="img-back">
+                    <h2>slide site</h2>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="slide__content">
+                    <img src="media/pic2.jpg" class="img-back">
+                    <h2>Choose a color</h2>
+                    <div class="container">
+                        <div class="box">
+                            R <input type="range" name="red" id="red"
+                            value="0" min="0" max="255">
+                        </div>
+                        <div class="box">
+                            G <input type="range" name="green" id="green"
+                            value="0" min="0" max="255">
+                        </div>
+                        <div class="box">
+                            B <input type="range" name="blue" id="blue"
+                            value="0" min="0" max="255">
+                        </div>
+                        <input type="text" id="result" value="rgb(0,0,0)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="slide__content">
+                    <img src="media/pic1.jpg" class="img-back">
+                    <h2>Press the space bar</h2>
+                    <button id="btn-game">начать</button>
+                    <div id="counter" style="display:none">count: </div>
+                    <div class="game" id = "game">
+                        <div id="human"></div>
+                        <div id="tree"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="slider-bottom">
+            <div class="slider-pagination">
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="slider-navigation">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+        <div id="feedback-modal" class="feedback">
+            <div class="feedback-content">
+                <span class="feedback-close">&times;</span>
+                <h6>Обратная связь</h6>
+                <form id="feedback-form">
+                    <label for="feedback-name">Имя</label>
+                    <input type="text" id="feedback-name" name="feedback-name" required>
+                    <label for="feedback-email">Email</label>
+                    <input type="email" id="feedback-email" name="feedback-email" required>
+                    <label for="feedback-message">Сообщение</label>
+                    <textarea id="feedback-message" name="feedback-message" required></textarea>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
